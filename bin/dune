@@ -1,0 +1,4 @@
+(executable
+ (public_name CamlCrawler)
+ (name main)
+ (libraries CamlCrawler))

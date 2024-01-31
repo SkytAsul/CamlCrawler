@@ -1,0 +1,1 @@
+val create_image : width:int -> string -> Notty.I.t
