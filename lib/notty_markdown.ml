@@ -30,7 +30,8 @@ let parse_block = function
 let parse text =
   let rec parse_doc (doc : doc) = match doc with
   | [] -> []
-  | a::tail -> (parse_block a) @ (parse_doc tail)
+  | a::tail -> (parse_block a) @ ([(empty, "")] :: (parse_doc tail))
+  (* maybe better solution for blank line *)
   in parse_doc (of_string text)
 
 let split_long_text width (line : line) : line list =

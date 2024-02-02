@@ -5,7 +5,7 @@
 (generate_opam_files true)
 
 (source
- (github SkytAsul/reponame))
+ (github SkytAsul/CamlCrawler))
 
 (authors "SkytAsul")
 
