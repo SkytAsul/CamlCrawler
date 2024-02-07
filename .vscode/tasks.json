@@ -5,7 +5,15 @@
 			"type": "shell",
 			"command": "dune exec CamlCrawler",
 			"group": "build",
-			"label": "dune: exec CamlCrawler"
+			"label": "dune: exec CamlCrawler",
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": true,
+				"panel": "dedicated",
+				"showReuseMessage": true,
+				"clear": false
+			}
 		}
 	]
 }

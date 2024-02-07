@@ -9,14 +9,15 @@ maintainer: ["SkytAsul"]
 authors: ["SkytAsul"]
 license: "LICENSE"
 tags: ["adventure" "console" "textual"]
-homepage: "https://github.com/SkytAsul/reponame"
+homepage: "https://github.com/SkytAsul/CamlCrawler"
 doc: "https://url/to/documentation"
-bug-reports: "https://github.com/SkytAsul/reponame/issues"
+bug-reports: "https://github.com/SkytAsul/CamlCrawler/issues"
 depends: [
   "ocaml"
   "dune" {>= "3.13"}
   "notty"
   "omd"
+  "yaml"
   "odoc" {with-doc}
 ]
 build: [
@@ -33,4 +34,4 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git+https://github.com/SkytAsul/reponame.git"
+dev-repo: "git+https://github.com/SkytAsul/CamlCrawler.git"

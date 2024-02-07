@@ -1,5 +1,5 @@
 type t
 
-val create: unit -> t
+val create: Story.story -> t
 
 val main_loop: t -> unit

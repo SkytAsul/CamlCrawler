@@ -1,6 +1,6 @@
 (library
  (name CamlCrawler)
- (libraries notty notty.unix omd))
+ (libraries notty notty.unix omd yaml))
 
 (env
   (dev

@@ -1,4 +1,5 @@
 (executable
  (public_name CamlCrawler)
  (name main)
+ (modes byte)
  (libraries CamlCrawler))

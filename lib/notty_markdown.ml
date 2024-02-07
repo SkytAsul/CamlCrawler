@@ -20,11 +20,13 @@ let rec parse_inline attr inline : (line list) = match inline with
 | _ -> failwith "unsupported text type"
 and parse_inline_list attr = function
 | [] -> []
-| Soft_break(_)::tail | Hard_break(_)::tail -> []::(parse_inline_list attr tail)
+| Soft_break(_)::tail -> merge_nested_lists [[(empty, " ")]] (parse_inline_list attr tail)
+| Hard_break(_)::tail -> [(empty, "")]::(parse_inline_list attr tail)
 | head::tail -> merge_nested_lists (parse_inline attr head) (parse_inline_list attr tail)
 
 let parse_block = function
 | Paragraph(_, inline) -> parse_inline A.empty inline
+| Heading(_, _, inline) -> merge_nested_lists [[(A.empty, "  ")]] (parse_inline (A.st A.bold) inline)
 | _ -> failwith "unsupported text type"
 
 let parse text =

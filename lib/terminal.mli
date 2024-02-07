@@ -16,6 +16,8 @@ type overflow = | Continuous | Paginated
 
 val create : overflow:overflow -> t
 
+val release : t -> unit
+
 val get_dimensions : t -> int * int
 
 val tick : t -> Notty.image -> 'a control list -> 'a event_result

@@ -22,7 +22,7 @@
  "A small textual game made for school and to improve myself in functional programming.
  Also contains whole modular interactive terminal interface, along with Markdown to Notty translator.
  ")
- (depends ocaml dune notty omd)
+ (depends ocaml dune notty omd yaml)
  (tags
   (adventure console textual)))
 
