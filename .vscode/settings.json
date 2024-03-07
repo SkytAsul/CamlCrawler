@@ -2,5 +2,12 @@
     "ocaml.sandbox": {
         "kind": "opam",
         "switch": "default"
-    }
+    },
+    "[yaml]": {
+        "editor.fontFamily": "'Ubuntu', 'ubuntu', sans serif",
+        "editor.fontSize": 16,
+        "editor.letterSpacing": 0.1,
+        "editor.fontWeight": 420
+    },
+    "workbench.colorTheme": "Quiet Light"
 }
