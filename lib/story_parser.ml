@@ -1,15 +1,18 @@
 open Story
 
-let assoc_string key assoc = match List.assoc key assoc with
-| `String(s) -> s
+let assoc_string key assoc = match List.assoc_opt key assoc with
+| Some(`String(s)) -> s
+| None -> failwith ("Cannot find " ^ key)
 | _ -> failwith "Syntax error"
 
-let assoc_assoc_list key assoc = match List.assoc key assoc with
-| `O(list) -> list
+let assoc_assoc_list key assoc = match List.assoc_opt key assoc with
+| Some(`O(list)) -> list
+| None -> failwith ("Cannot find " ^ key)
 | _ -> failwith "Syntax error"
 
-let assoc_list key assoc = match List.assoc key assoc with
-| `A(list) -> list
+let assoc_list key assoc = match List.assoc_opt key assoc with
+| Some(`A(list)) -> list
+| None -> failwith ("Cannot find " ^ key)
 | _ -> failwith "Syntax error"
 
 let rec parse_condition value = match value with
