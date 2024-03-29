@@ -39,11 +39,11 @@ let parse text =
 let split_long_text width (line : line) : line list =
   let rec aux spare_w = function
   | [] -> []
-  | (attr, text)::tail -> let len = String.length text in
+  | (attr, text)::tail as full_line -> let len = String.length text in
     if len <= spare_w then merge_nested_lists [[(attr, text)]] (aux (spare_w - len) tail)
     else begin match String.rindex_from_opt text spare_w ' ' with
     | None -> (* there is no space for one word: we must either postpone it for next line, or split it we are on a blank line *)
-      if spare_w < width then aux width ((attr, String.sub text spare_w (len - spare_w)) :: tail)
+      if spare_w < width then [] :: aux width full_line
       else [(attr, String.sub text 0 width)] :: (aux width ((attr, String.sub text width (len - width)) :: tail))
     | Some(last_space) -> (* there is enough space for at least one word *)
       [(attr, String.sub text 0 last_space)] :: (aux width ((attr, String.sub text (last_space + 1) (len - last_space - 1)) :: tail))
@@ -54,8 +54,10 @@ let rec line_to_image (line : line) = match line with
 | [] -> I.empty
 | (attr, text)::tail -> (string attr text) <|> (line_to_image tail)
 
+let cut_lines ~width text = let raw_lines = parse text in
+  List.flatten (List.map (split_long_text width) raw_lines)
+
 let create_image ~width text =
-  let raw_lines = parse text in
-  let cut_lines = List.flatten (List.map (split_long_text width) raw_lines) in
-  let images = List.map line_to_image cut_lines in
+  let lines = cut_lines ~width text in
+  let images = List.map line_to_image lines in
   List.fold_left (<->) I.empty images
