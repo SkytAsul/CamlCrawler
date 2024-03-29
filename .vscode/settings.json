@@ -9,5 +9,6 @@
         "editor.letterSpacing": 0.1,
         "editor.fontWeight": 420
     },
-    "workbench.colorTheme": "Quiet Light"
+    "workbench.colorTheme": "Rosé Pine Dawn",
+    "discord.enabled": false
 }
